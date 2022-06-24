@@ -39,6 +39,10 @@ class treeNodeApi {
       const res = await this.request(`tree/${id}`, undefined, "delete")
       console.log(res)
     }
+    static async generateChildren (name, data) {
+      const res =  await this.request(`tree/${name}`, data, "post")
+      return res
+    }
 }
 
 export default treeNodeApi

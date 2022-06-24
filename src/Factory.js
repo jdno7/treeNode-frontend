@@ -18,7 +18,7 @@ const Factory = ({factory, tree, setTree}) => {
             <button onClick={() => removeFactory(node_id)}>X</button>
             <div className='FactoryNode'>
                 {name}
-                <GenerateChildrenForm/>
+                <GenerateChildrenForm node_id={node_id} tree={tree} setTree={setTree}/>
             </div>
             <div className='Children'>
                 {children.map(c => <span className='Child'>{c.name}</span>)}
