@@ -43,6 +43,11 @@ class treeNodeApi {
       const res =  await this.request(`tree/${name}`, data, "post")
       return res
     }
+
+    static async updateFactoryName (id, data) {
+      const res = await this.request(`tree/${id}`, data, "patch")
+      return res
+    }
 }
 
 export default treeNodeApi

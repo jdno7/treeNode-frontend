@@ -2,9 +2,11 @@ import React, {useState, useEffect} from 'react'
 import treeNodeApi from './api'
 import './Factory.css'
 import GenerateChildrenForm from './GenerateChildrenForm'
+import EditFactoryNameForm from './EditFactoryNameForm'
 
 const Factory = ({factory, tree, setTree}) => {
     const {name, node_id, children} = factory
+    const [edit, setEdit] = useState(false)
 
     const removeFactory = async (id) => {
         await treeNodeApi.removeFactory(id)
@@ -16,8 +18,10 @@ const Factory = ({factory, tree, setTree}) => {
         <>
         <div className='Factory'>
             <button onClick={() => removeFactory(node_id)}>X</button>
+            <button onClick={() => setEdit(!edit)}>Edit</button>
             <div className='FactoryNode'>
-                {name}
+                {edit? <EditFactoryNameForm tree={tree} setTree={setTree} node_id={node_id} currName={name} edit={edit} setEdit={setEdit}/>
+                           :name}
                 <GenerateChildrenForm node_id={node_id} tree={tree} setTree={setTree}/>
             </div>
             <div className='Children'>
