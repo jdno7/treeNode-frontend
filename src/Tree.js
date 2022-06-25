@@ -3,6 +3,7 @@ import treeNodeApi from './api'
 import Factory from './Factory'
 import Factories from './Factories'
 import NewFactoryForm from './NewFactoryForm'
+import './RootNode.css'
 
 const Tree = () => {
     const [tree, setTree] = useState(null)
@@ -20,7 +21,7 @@ const Tree = () => {
         <>
         { tree?
             <div>
-                <div>
+                <div className='RootNode'>
                     <h1>{tree.root.name}</h1>
                 </div>
                 <Factories factories={tree.factories} tree={tree} setTree={setTree}/>

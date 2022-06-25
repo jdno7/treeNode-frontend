@@ -1,5 +1,7 @@
 import React from 'react';
 import Factory from './Factory';
+import './Factories.css'
+import EditFactoryNameForm from './EditFactoryNameForm';
 
 const Factories = ({factories, tree, setTree}) => {
     return (

@@ -1,0 +1,9 @@
+.RootNode {
+    width: 40%;
+    margin: auto;
+    background-color: slategrey;
+    border-radius: 12px;
+}
+.RootNode h1 {
+   letter-spacing: 20px;
+}

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import treeNodeApi from './api'
+import './EditFactoryNameForm.css'
 
 const EditFactoryNameForm = ({currName, node_id, tree, setTree, edit, setEdit}) => {
     const initialState = {name:""}

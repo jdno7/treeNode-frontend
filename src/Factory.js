@@ -17,11 +17,11 @@ const Factory = ({factory, tree, setTree}) => {
     return (
         <>
         <div className='Factory'>
-            <button onClick={() => removeFactory(node_id)}>X</button>
-            <button onClick={() => setEdit(!edit)}>Edit</button>
+            <button className='Factory-btn-remove' onClick={() => removeFactory(node_id)}>X</button>
+            <button className='Factory-btn-edit' onClick={() => setEdit(!edit)}>Edit</button>
             <div className='FactoryNode'>
                 {edit? <EditFactoryNameForm tree={tree} setTree={setTree} node_id={node_id} currName={name} edit={edit} setEdit={setEdit}/>
-                           :name}
+                           :<h4 className='Factory-name'>{name}</h4>}
                 <GenerateChildrenForm node_id={node_id} tree={tree} setTree={setTree}/>
             </div>
             <div className='Children'>

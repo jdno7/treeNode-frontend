@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import treeNodeApi from './api'
+import './GenerateChildrenForm.css'
 
 const GenerateChildrenForm = ({node_id, tree, setTree}) => {
     const initialState = {lowerBound:"", upperBound:"", numChildren:''}
     const [formData, setFormData] = useState(initialState)
     console.log(formData)
+
     const handleChange = (e) => {
         const {name, value} = e.target
         setFormData(d => ({
@@ -24,11 +26,22 @@ const GenerateChildrenForm = ({node_id, tree, setTree}) => {
         setFormData(initialState)
     }
     if (+formData.numChildren > 15) formData.numChildren = 15
+    if (+formData.lowerBound > +formData.upperBound) 
+        setFormData(d => ({
+            ...d,
+            upperBound: +formData.lowerBound+1
+        }) )
+    if (+formData.upperBound < +formData.lowerBound) 
+        setFormData(d => ({
+            ...d,
+            upperBound: +formData.lowerBound+1
+        }) )
+
     return (
         <>
         <form onSubmit={handleSubmit}  className='GenerateChildrenForm'>
-            <p><strong>Generate Children</strong></p>
-            <label htmlFor='children'>Children (15 max)</label> <br></br>
+            <h6>Generate Children</h6>
+            <label className='GenerateChildrenForm-label' htmlFor='children'>Children: (15 max) </label> <br></br>
                 <input
                     required
                     onChange={handleChange}
@@ -38,20 +51,20 @@ const GenerateChildrenForm = ({node_id, tree, setTree}) => {
                     max={15}
                     name="numChildren"/>
         <br></br>
-            <label htmlFor='min'>Min</label> <br></br>
+            <label className='GenerateChildrenForm-label' htmlFor='min'>Min :</label> <br></br>
                 <input
                     required
                     onChange={handleChange}
-                    value={formData.min}
+                    value={formData.lowerBound}
                     className="GenerateChildrenForm-input"
                     type="number"
                     name="lowerBound"/>
-        <br></br>
-            <label htmlFor='max'>Max</label> <br></br>
+        {/* <br></br> */}
+            <label className='GenerateChildrenForm-label' htmlFor='max'>Max :</label> <br></br>
                 <input
                     required
                     onChange={handleChange}
-                    value={formData.max}
+                    value={formData.upperBound}
                     className="GenerateChildrenForm-input"
                     type="number"
                     name="upperBound"/> <br></br>
