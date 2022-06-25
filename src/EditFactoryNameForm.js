@@ -2,9 +2,13 @@ import React, {useState, useEffect} from 'react'
 import treeNodeApi from './api'
 import './EditFactoryNameForm.css'
 
+// This form will appear in place of the factory name when the edit button is clicked
+// an input will apear with a placeholder of the current factory name
+// When submitted the state and db will be updated with the new factory name
 const EditFactoryNameForm = ({currName, node_id, tree, setTree, edit, setEdit}) => {
     const initialState = {name:""}
     const [formData, setFormData] = useState(initialState)
+
     const handleChange = (e) => {
         const {name, value} = e.target
         setFormData(d => ({
@@ -25,7 +29,7 @@ const EditFactoryNameForm = ({currName, node_id, tree, setTree, edit, setEdit}) 
 
     return (
         <form className='EditFactoryNameForm'onSubmit={handleSubmit}>
-            {/* <label className='NewFactoryForm-name-label' htmlFor='name'>Factory Name</label> <br></br> */}
+            
             <input
                 required
                 onChange={handleChange}

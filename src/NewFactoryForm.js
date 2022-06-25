@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import treeNodeApi from './api'
 
+// Create a new factory from the Name provided
 const NewFactoryForm = ({tree,setTree}) => {
     
     const initialState = {name:""}

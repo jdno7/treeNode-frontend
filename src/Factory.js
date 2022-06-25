@@ -4,6 +4,11 @@ import './Factory.css'
 import GenerateChildrenForm from './GenerateChildrenForm'
 import EditFactoryNameForm from './EditFactoryNameForm'
 
+// Factory Node
+// when the "Edit" btn is clicked and edit state = True an EditFactoryNameForm is rendered with a placeholder of the current factory name for the user to edit
+// when the "X" button is clicked it will remove the factory and its children
+// contains "GenerateChildrenForm" where a user can create new children 
+//           if the factory hsa existing children they are removed 
 const Factory = ({factory, tree, setTree}) => {
     const {name, node_id, children} = factory
     const [edit, setEdit] = useState(false)

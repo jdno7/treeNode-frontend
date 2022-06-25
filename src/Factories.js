@@ -1,8 +1,9 @@
 import React from 'react';
 import Factory from './Factory';
 import './Factories.css'
-import EditFactoryNameForm from './EditFactoryNameForm';
 
+// Parent element for Factory Nodes
+// loop through the factories and render a Factory Component for each
 const Factories = ({factories, tree, setTree}) => {
     return (
         <div className='Factories'>

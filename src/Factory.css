@@ -24,6 +24,7 @@
 .Child {
     background-color: rgb(128, 128, 252);
     margin: 1.5px;
+    border-radius: 3px;
 }
 
 .Factory-name {
@@ -33,6 +34,7 @@
 
 .Factory-btn-remove {
     position:absolute;
+    top:2px;
     right:0px;
     background: none;
     border: none;
@@ -43,6 +45,7 @@
     position: absolute;
     background: none;
     border: none;
+    top: 2px;
     right: 10px;
     font-size: .6rem;
     z-index: 1;

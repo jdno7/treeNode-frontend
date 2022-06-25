@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import treeNodeApi from './api'
 import './GenerateChildrenForm.css'
 
+// Creates new Children for the correcponding factory
 const GenerateChildrenForm = ({node_id, tree, setTree}) => {
     const initialState = {lowerBound:"", upperBound:"", numChildren:''}
     const [formData, setFormData] = useState(initialState)
@@ -25,12 +26,18 @@ const GenerateChildrenForm = ({node_id, tree, setTree}) => {
         setTree(oldTree => newTree)
         setFormData(initialState)
     }
+    // if a user changes the numChildren input to more than 15
+    // set it back to 15
     if (+formData.numChildren > 15) formData.numChildren = 15
+    // if the Min(lowerBound) input is greater than Max 
+    // set the Max to on number greater than Min
     if (+formData.lowerBound > +formData.upperBound) 
         setFormData(d => ({
             ...d,
             upperBound: +formData.lowerBound+1
         }) )
+    // if the Max(upperBound) input is less than Min
+    // set the Max the one number greater than Min
     if (+formData.upperBound < +formData.lowerBound) 
         setFormData(d => ({
             ...d,
