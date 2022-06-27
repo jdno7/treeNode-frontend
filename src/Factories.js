@@ -6,9 +6,12 @@ import './Factories.css'
 // loop through the factories and render a Factory Component for each
 const Factories = ({factories, tree, setTree}) => {
     return (
-        <div className='Factories'>
-            {factories.map(f => <Factory factory={f} tree={tree} setTree={setTree}/>)}
-        </div>
+        <>
+            <h2>Factories</h2>
+            <div className='Factories'>
+                {factories.map(f => <Factory factory={f} tree={tree} setTree={setTree}/>)}
+            </div>
+        </>
     )
 }
 

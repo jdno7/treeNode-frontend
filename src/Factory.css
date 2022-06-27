@@ -5,7 +5,7 @@
     margin: 0 15px;
     min-width: 10vw;
     max-width: 15vw;
-    background: rgb(58, 58, 230);
+    background: rgba(58, 58, 230, 0.7);
 }
 
 .Children {
@@ -20,11 +20,17 @@
     min-height:100px;
     padding: 10px;
 }
+.FactoryNode h4 {
+    text-decoration: underline;
+}
 
 .Child {
-    background-color: rgb(128, 128, 252);
+    background-color: rgb(94, 94, 254);
+    border: 1px solid rgb(210, 191, 255);
     margin: 1.5px;
     border-radius: 3px;
+    padding:2px;
+    color:rgba(240, 255, 255, 0.807)
 }
 
 .Factory-name {
@@ -35,7 +41,7 @@
 .Factory-btn-remove {
     position:absolute;
     top:2px;
-    right:0px;
+    right:1px;
     background: none;
     border: none;
     font-size: .6rem;
@@ -46,7 +52,7 @@
     background: none;
     border: none;
     top: 2px;
-    right: 10px;
+    right: 14px;
     font-size: .6rem;
     z-index: 1;
 }

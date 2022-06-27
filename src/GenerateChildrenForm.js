@@ -6,7 +6,6 @@ import './GenerateChildrenForm.css'
 const GenerateChildrenForm = ({node_id, tree, setTree}) => {
     const initialState = {lowerBound:"", upperBound:"", numChildren:''}
     const [formData, setFormData] = useState(initialState)
-    console.log(formData)
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -14,9 +13,14 @@ const GenerateChildrenForm = ({node_id, tree, setTree}) => {
             ...d,
             [name]: value
         }))
-       
     }
     const handleSubmit = async (e) => {
+        // If a user tries to submit with the Max > Min Alert them to this issue and return
+        if (+formData.upperBound < +formData.lowerBound) {
+            alert("Max must be less than Min")
+            e.preventDefault()
+            return
+        }
         e.preventDefault()
         const newChildren = await treeNodeApi.generateChildren(node_id, formData)
         const newTree = {...tree}
@@ -29,21 +33,8 @@ const GenerateChildrenForm = ({node_id, tree, setTree}) => {
     // if a user changes the numChildren input to more than 15
     // set it back to 15
     if (+formData.numChildren > 15) formData.numChildren = 15
-    // if the Min(lowerBound) input is greater than Max 
-    // set the Max to on number greater than Min
-    if (+formData.lowerBound > +formData.upperBound) 
-        setFormData(d => ({
-            ...d,
-            upperBound: +formData.lowerBound+1
-        }) )
-    // if the Max(upperBound) input is less than Min
-    // set the Max the one number greater than Min
-    if (+formData.upperBound < +formData.lowerBound) 
-        setFormData(d => ({
-            ...d,
-            upperBound: +formData.lowerBound+1
-        }) )
-
+    console.log(+formData.upperBound,+formData.lowerBound, +formData.upperBound<+formData.lowerBound?'True':"False" )
+   
     return (
         <>
         <form onSubmit={handleSubmit}  className='GenerateChildrenForm'>
@@ -74,7 +65,10 @@ const GenerateChildrenForm = ({node_id, tree, setTree}) => {
                     value={formData.upperBound}
                     className="GenerateChildrenForm-input"
                     type="number"
-                    name="upperBound"/> <br></br>
+                    name="upperBound"
+                    style={+formData.upperBound<+formData.lowerBound? {backgroundColor:'red'}:{backgroundColor:'white'}}
+                    />
+                    <br></br>
             <button>Generate</button>
         </form>
         </>
