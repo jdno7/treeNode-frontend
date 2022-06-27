@@ -13,6 +13,8 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 class treeNodeApi {
     // set up a clean way to make our requests by using this.request in our API calls
     static async request(endpoint, data = {}, method = "get") {
+      console.log("Base URL=",BASE_URL)
+      console.log("Request URL=",`${BASE_URL}/${endpoint}`)
         console.debug("API Call:", endpoint, data, method);
         const url = `${BASE_URL}/${endpoint}`
         try {
