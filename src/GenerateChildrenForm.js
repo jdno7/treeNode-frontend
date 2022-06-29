@@ -3,7 +3,7 @@ import treeNodeApi from './api'
 import './GenerateChildrenForm.css'
 
 // Creates new Children for the correcponding factory
-const GenerateChildrenForm = ({node_id, tree, setTree}) => {
+const GenerateChildrenForm = ({node_id, tree, setTree, ws}) => {
     const initialState = {lowerBound:"", upperBound:"", numChildren:''}
     const [formData, setFormData] = useState(initialState)
 
@@ -27,7 +27,8 @@ const GenerateChildrenForm = ({node_id, tree, setTree}) => {
         const factory = newTree.factories.findIndex(f => f.node_id === node_id)
         console.log("factoryIdx = ",factory)
         newTree.factories[factory].children = newChildren
-        setTree(oldTree => newTree)
+        ws.send("get me a tree")
+        // setTree(oldTree => newTree)
         setFormData(initialState)
     }
     // if a user changes the numChildren input to more than 15

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import treeNodeApi from './api'
 
 // Create a new factory from the Name provided
-const NewFactoryForm = ({tree,setTree}) => {
+const NewFactoryForm = ({tree,setTree, ws}) => {
     
     const initialState = {name:""}
     const [formData, setFormData] = useState(initialState)
@@ -20,7 +20,8 @@ const NewFactoryForm = ({tree,setTree}) => {
         newFactory.children = []
         const newTree = {...tree}
         newTree.factories.push(newFactory)
-        setTree(oldTree => newTree)
+        ws.send("Get me a tree")
+        // setTree(oldTree => newTree)
         setFormData(initialState)
     }
 

@@ -5,7 +5,7 @@ import './EditFactoryNameForm.css'
 // This form will appear in place of the factory name when the edit button is clicked
 // an input will apear with a placeholder of the current factory name
 // When submitted the state and db will be updated with the new factory name
-const EditFactoryNameForm = ({currName, node_id, tree, setTree, edit, setEdit}) => {
+const EditFactoryNameForm = ({currName, node_id, tree, setTree, edit, setEdit, ws}) => {
     const initialState = {name:""}
     const [formData, setFormData] = useState(initialState)
 
@@ -23,7 +23,8 @@ const EditFactoryNameForm = ({currName, node_id, tree, setTree, edit, setEdit}) 
         const newTree = {...tree}
         const factory = newTree.factories.findIndex(f => f.node_id === node_id)
         newTree.factories[factory].name = newName
-        setTree(oldTree => newTree)
+        ws.send("Get me a tree")
+        // setTree(oldTree => newTree)
         setEdit(!edit)
     }
 

@@ -9,7 +9,7 @@ import EditFactoryNameForm from './EditFactoryNameForm'
 // when the "X" button is clicked it will remove the factory and its children
 // contains "GenerateChildrenForm" where a user can create new children 
 //           if the factory hsa existing children they are removed 
-const Factory = ({factory, tree, setTree}) => {
+const Factory = ({factory, tree, setTree, ws}) => {
     const {name, node_id, children} = factory
     const [edit, setEdit] = useState(false)
 
@@ -17,7 +17,8 @@ const Factory = ({factory, tree, setTree}) => {
         await treeNodeApi.removeFactory(id)
         const newTree = {...tree}
         newTree.factories = newTree.factories.filter(factory => factory.node_id != id)
-        setTree(oldTree => newTree)
+        ws.send("Get me a tree")
+        // setTree(oldTree => newTree)
     }
     return (
         <>
@@ -25,9 +26,9 @@ const Factory = ({factory, tree, setTree}) => {
             <button className='Factory-btn-remove' onClick={() => removeFactory(node_id)}>X</button>
             <button className='Factory-btn-edit' onClick={() => setEdit(!edit)}>Edit</button>
             <div className='FactoryNode'>
-                {edit? <EditFactoryNameForm tree={tree} setTree={setTree} node_id={node_id} currName={name} edit={edit} setEdit={setEdit}/>
+                {edit? <EditFactoryNameForm tree={tree} setTree={setTree} node_id={node_id} currName={name} edit={edit} setEdit={setEdit} ws={ws}/>
                            :<h4 className='Factory-name'>{name}</h4>}
-                <GenerateChildrenForm node_id={node_id} tree={tree} setTree={setTree}/>
+                <GenerateChildrenForm node_id={node_id} tree={tree} setTree={setTree} ws={ws}/>
             </div>
             <div className='Children'>
                 {children.map(c => <span className='Child'>{c.name}</span>)}
