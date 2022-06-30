@@ -1,0 +1,29 @@
+.NewFactoryForm {
+    margin: 50px auto;
+    width:40%;
+    /* box-shadow: 10px 10px 10px 20px rgba(0, 0, 0, 0.065); */
+}
+
+.NewFactoryForm-name-input {
+    border-radius: 10px;
+    
+}
+
+.NewFactoryForm-btn {
+    border: transprent;
+    border-radius: 6px;
+    margin-top: 15px;
+    
+}
+
+.NewFactoryForm-name-label {
+
+}
+
+.NewFactoryForm h4 {
+    color:rgb(177, 177, 177);
+}
+.NewFactoryForm label {
+    color:rgb(177, 177, 177);
+    margin:5px;
+}

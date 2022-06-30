@@ -3,13 +3,21 @@
 }
 
 .EditFactoryNameForm-input {
-   margin:20px 0 10px 0;
+   margin:25px 0 10px 0;
    width:70%;
    border:none;
+   border-radius: 10px;
    text-align: center;
 }
 
 .EditFactoryName-btn {
+   background-color: transparent;
+   border-radius: 15px;
+   border:none;
+}
+.EditFactoryName-btn:hover {
+   transition: all 500ms;
+   color:white;
    border-radius: 15px;
    border:none;
 }

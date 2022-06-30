@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import treeNodeApi from './api'
+import './NewFactoryForm.css'
 
 // Create a new factory from the Name provided
 const NewFactoryForm = ({tree,setTree, ws}) => {
@@ -27,8 +28,8 @@ const NewFactoryForm = ({tree,setTree, ws}) => {
 
     return (
         <form className='NewFactoryForm'onSubmit={handleSubmit}>
-            <h4>Create New Factory</h4>
-            <label className='NewFactoryForm-name-label' htmlFor='name'>Factory Name</label> <br></br>
+            <h4>New Factory</h4>
+            <label className='NewFactoryForm-name-label' htmlFor='name'>Name</label> <br></br>
             <input
                 required
                 onChange={handleChange}
@@ -37,7 +38,8 @@ const NewFactoryForm = ({tree,setTree, ws}) => {
                 type="text"
                 name="name"
             />
-            <button>Create Factory</button>
+            <br/>
+            <button className='NewFactoryForm-btn'>Create</button>
         </form>
     )
 }

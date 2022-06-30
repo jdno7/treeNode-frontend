@@ -26,19 +26,20 @@ const Factory = ({factory, tree, setTree, ws}) => {
         <>
         
             <div>
-                <Card style={{borderRadius:'8px', margin:'10px'}}>
+                <Card className='shadow' style={{border:'none', margin:'10px', borderRadius:'15px'}}>
                     <button className='Factory-btn-remove' onClick={() => removeFactory(node_id)}>X</button>
                     <button className='Factory-btn-edit' onClick={() => setEdit(!edit)}>{edit? 'Cancel': 'Edit'}</button>
                     <div className='FactoryNode'>
                         {edit? <EditFactoryNameForm tree={tree} setTree={setTree} node_id={node_id} currName={name} edit={edit} setEdit={setEdit} ws={ws}/>
-                                :<Card.Title style={{backgroundColor:'grey', padding:'10px', borderRadius:'8px 8px 0 0'}}>{name}</Card.Title>}
+                                :<h4 style={{backgroundColor:'grey', padding:'10px', borderRadius:'15px 15px 0 0'}}>{name}</h4>}
                         <GenerateChildrenForm className={show?'show':'hide'} node_id={node_id} tree={tree} setTree={setTree} ws={ws} show={show}/>
-                        <button className="GenerateChildren-btn" onClick={()=>setShow(!show)}>{show?'^^^':'Generate Children'}</button>
+                        <button className={edit?"hide2":"GenerateChildren-btn"} onClick={()=>setShow(!show)}>{show?'^^^':'+'}</button>
                     </div>
+                    
+                </Card>
                     <div className='Children'>
                         {children.map(c => <span className='Child'>{c.name}</span>)}
                     </div>
-                </Card>
             </div>  
         
         </>

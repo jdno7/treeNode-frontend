@@ -1,0 +1,16 @@
+.Root {
+    background-color: rgb(216, 216, 216) !important;
+    margin: 35px auto 0 auto;
+    width:30%;
+    border-radius: 25px;
+
+}
+.card-title {
+    font-size: 3em;
+}
+
+h2{
+    color:rgb(208, 208, 208);
+    margin-top:30px;
+    letter-spacing: 5px;
+}

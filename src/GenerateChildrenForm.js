@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import treeNodeApi from './api'
 import './GenerateChildrenForm.css'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 // Creates new Children for the correcponding factory
 const GenerateChildrenForm = ({node_id, tree, setTree, ws, show}) => {
     const initialState = {lowerBound:"", upperBound:"", numChildren:''}
     const [formData, setFormData] = useState(initialState)
+    const [maxLess, setMaxLess] = useState(false)
     
 
     const handleChange = (e) => {
@@ -18,7 +21,7 @@ const GenerateChildrenForm = ({node_id, tree, setTree, ws, show}) => {
     const handleSubmit = async (e) => {
         // If a user tries to submit with the Max > Min Alert them to this issue and return
         if (+formData.upperBound < +formData.lowerBound) {
-            alert("Max must be less than Min")
+            setMaxLess(!maxLess)
             e.preventDefault()
             return
         }
@@ -39,8 +42,13 @@ const GenerateChildrenForm = ({node_id, tree, setTree, ws, show}) => {
    
     return (
         <>
+                <Modal show={maxLess}>
+                    <Modal.Dialog>
+                        <Modal.Body>Max must be less than Min</Modal.Body>
+                        <Button onClick={()=>setMaxLess(!maxLess)} variant="secondary">Got It</Button>
+                    </Modal.Dialog>
+                </Modal>
         <form onSubmit={handleSubmit}  className={`GenerateChildrenForm ${show?'show':'hide'}`}>
-            <h6>Generate Children</h6>
             <label className='GenerateChildrenForm-label' htmlFor='children'>Children: (15 max) </label> <br></br>
                 <input
                     required
@@ -59,7 +67,7 @@ const GenerateChildrenForm = ({node_id, tree, setTree, ws, show}) => {
                     className="GenerateChildrenForm-input"
                     type="number"
                     name="lowerBound"/>
-        {/* <br></br> */}
+        <br></br>
             <label className='GenerateChildrenForm-label' htmlFor='max'>Max :</label> <br></br>
                 <input
                     required
@@ -68,10 +76,10 @@ const GenerateChildrenForm = ({node_id, tree, setTree, ws, show}) => {
                     className="GenerateChildrenForm-input"
                     type="number"
                     name="upperBound"
-                    style={+formData.upperBound<+formData.lowerBound? {backgroundColor:'red'}:{backgroundColor:'white'}}
+                    style={+formData.upperBound<+formData.lowerBound? {backgroundColor:'rgba(255,0,0,.3)'}:{backgroundColor:'white'}}
                     />
                     <br></br>
-            <button>Generate</button>
+            <button className='GenerateChildrenForm-btn'>Generate</button>
         </form>
         </>
         

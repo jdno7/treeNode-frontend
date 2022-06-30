@@ -4,6 +4,7 @@ import Factory from './Factory'
 import Factories from './Factories'
 import NewFactoryForm from './NewFactoryForm'
 import './RootNode.css'
+import './Tree.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
@@ -42,14 +43,12 @@ const Tree = () => {
     return (
         <Container>
       { tree? <>  
-                 <Card className='Root' bg="primary"
-                       text="yellow">
+                 <Card className='Root'>
                     <Card.Body>
                         <Card.Title>{tree.root.name}</Card.Title>
-                        <Card.Text>Sample Text</Card.Text>
                     </Card.Body>
                 </Card>
-                <h2>Factories</h2>
+                <h2>FACTORIES</h2>
                     <Factories factories={tree.factories} tree={tree} setTree={setTree} ws={ws}/>
                     <NewFactoryForm tree={tree} setTree={setTree} ws={ws}/>
                </>

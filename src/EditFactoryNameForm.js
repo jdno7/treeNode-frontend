@@ -42,7 +42,7 @@ const EditFactoryNameForm = ({currName, node_id, tree, setTree, edit, setEdit, w
                 type="text"
                 name="name"
             />
-            {/* <br></br> */}
+            <br></br>
             <button className='EditFactoryName-btn'>Save</button>
         </form>
         </>

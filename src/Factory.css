@@ -10,6 +10,7 @@
 
 .Children {
  min-height: 30px;
+ max-width: 230px;
  display: flex;
  align-items: center;
  justify-content: center;
@@ -17,22 +18,26 @@
 }
 
 .FactoryNode {
+    border-radius: 15px 15px 15px 15px;
     min-width: 211px;
     min-height:100px;
-    background-color: rgba(128, 128, 128);
+    background-color: rgb(153, 153, 153);
     /* padding: 10px; */
 }
 .FactoryNode h4 {
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 .Child {
-    background-color: rgb(94, 94, 254);
-    border: 1px solid rgb(210, 191, 255);
+    height:40px;
+    width:40px;
+    background-color: rgb(225, 225, 225);
+    /* border: 1px solid rgb(210, 191, 255); */
     margin: 1.5px;
     border-radius: 3px;
     padding:2px;
-    color:rgba(240, 255, 255, 0.807)
+    color:rgba(73, 73, 73, 0.807);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.034);
 }
 
 .Factory-name {
@@ -43,7 +48,7 @@
 .Factory-btn-remove {
     position:absolute;
     top:2px;
-    right:1px;
+    right:3px;
     background: none;
     border: none;
     font-size: .6rem;
@@ -54,26 +59,40 @@
     background: none;
     border: none;
     top: 2px;
-    right: 14px;
+    right: 17px;
     font-size: .6rem;
     z-index: 1;
+}
+.Factory-btn-edit:hover {
+   color:white;
+   transition:all 500ms;
+}
+.Factory-btn-remove:hover {
+   color:white;
+   transition:all 500ms;
 }
 
 .GenerateChildren-btn{
     position:absolute;
-    bottom:50px;
+    font-size:1.5rem;
+    bottom:5px;
     left:0;
     right:0;
     margin:auto;
-    width:70%;
-    background-color:rgb(211, 211, 211);
+    /* background-color:rgb(211, 211, 211); */
+    background-color:transparent;
     border:none;
     border-radius: 12px;
 }
 .GenerateChildren-btn:hover{
     transition:all 500ms;
-    background-color:rgb(169, 169, 169);
+    /* background-color:rgb(169, 169, 169); */
     color: white;
     border:none;
     border-radius: 20px;
+}
+
+.hide2 {
+   
+   display: none;
 }
