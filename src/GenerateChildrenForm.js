@@ -3,9 +3,10 @@ import treeNodeApi from './api'
 import './GenerateChildrenForm.css'
 
 // Creates new Children for the correcponding factory
-const GenerateChildrenForm = ({node_id, tree, setTree, ws}) => {
+const GenerateChildrenForm = ({node_id, tree, setTree, ws, show}) => {
     const initialState = {lowerBound:"", upperBound:"", numChildren:''}
     const [formData, setFormData] = useState(initialState)
+    
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -38,7 +39,7 @@ const GenerateChildrenForm = ({node_id, tree, setTree, ws}) => {
    
     return (
         <>
-        <form onSubmit={handleSubmit}  className='GenerateChildrenForm'>
+        <form onSubmit={handleSubmit}  className={`GenerateChildrenForm ${show?'show':'hide'}`}>
             <h6>Generate Children</h6>
             <label className='GenerateChildrenForm-label' htmlFor='children'>Children: (15 max) </label> <br></br>
                 <input

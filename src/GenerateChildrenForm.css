@@ -10,3 +10,18 @@ h6{
     font-size: .6rem;
 }
 
+.hide {
+    
+
+    /* transition: height 700ms, opacity 200ms; */
+    transition: all 700ms;
+    height:0px;
+   /* transform:translateY(-110%); */
+    opacity: 0;
+}
+.show {
+    position:unset;
+    transition:height 700ms, opacity 350ms;
+    height:280px;
+    opacity: 100;
+}

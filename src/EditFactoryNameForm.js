@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import treeNodeApi from './api'
 import './EditFactoryNameForm.css'
+import Form from 'react-bootstrap/Form'
 
 // This form will appear in place of the factory name when the edit button is clicked
 // an input will apear with a placeholder of the current factory name
@@ -29,7 +30,8 @@ const EditFactoryNameForm = ({currName, node_id, tree, setTree, edit, setEdit, w
     }
 
     return (
-        <form className='EditFactoryNameForm'onSubmit={handleSubmit}>
+        <>
+            <form className='EditFactoryNameForm'onSubmit={handleSubmit}>
             
             <input
                 required
@@ -40,8 +42,11 @@ const EditFactoryNameForm = ({currName, node_id, tree, setTree, edit, setEdit, w
                 type="text"
                 name="name"
             />
-            <button>Save</button>
+            {/* <br></br> */}
+            <button className='EditFactoryName-btn'>Save</button>
         </form>
+        </>
+       
     )
 }
 
